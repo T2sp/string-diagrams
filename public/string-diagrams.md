@@ -1,12 +1,12 @@
 ---
 title: TikZ入門-モノイダル圏のストリング図式を描く-
 tags:
-  - 'TeX'
-  - 'LaTeX'
-  - 'TikZ'
+  - LaTeX
+  - TeX
+  - TikZ
 private: false
-updated_at: ''
-id: null
+updated_at: '2025-02-12T04:09:43+09:00'
+id: 7125b50ad9413882e6c0
 organization_url_name: null
 slide: false
 ignorePublish: false
