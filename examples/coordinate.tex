@@ -1,0 +1,139 @@
+\documentclass{standalone}
+
+%%%%%%%%%%packages%%%%%%%%%%
+
+% \usepackage[utf8]{inputenc}
+
+%% colors and links
+\usepackage[svgnames]{xcolor}
+\usepackage[colorlinks,citecolor=DarkGreen,linkcolor=DeepPink,linktocpage,unicode]{hyperref} 
+
+%% equations
+%%%% math
+\usepackage{amsmath,amsfonts,amssymb,amsthm}
+\usepackage{mathtools}
+\usepackage{mathrsfs}
+\usepackage{bm}
+\usepackage{cancel}
+\usepackage{dsfont}
+
+%% positioning
+\usepackage{array}
+\usepackage{float}
+
+%% table
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{hhline}
+\usepackage{caption}
+\captionsetup{format=hang}
+\usepackage{subcaption}
+
+%% figure
+\usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{
+    intersections,
+    calc,
+    patterns,
+    through,
+    positioning,
+    arrows,
+    backgrounds,
+    decorations,
+    bending,
+    cd,
+    tqft,
+    braids,
+    ext.paths.ortho,                    % for ortho paths
+  ext.positioning-plus,               % for 
+  ext.node-families.shapes.geometric
+}
+\tikzset{
+    ->-/.style={
+        decoration={
+            markings,
+            mark=at position #1 with {\arrow{>}}
+        },
+        postaction={decorate}
+    },
+    bullet/.style={
+        circle,fill,
+        inner sep=2pt,
+        label={#1}
+    },    
+    process/.style={
+        shape=rectangle, rounded corners, align=center, draw=#1, minimum width=0.875\linewidth, double
+    },
+    header node/.style={
+        node family/width=header nodes,
+        font=\strut\Large\ttfamily,
+        text depth=+.3ex, fill=white, draw
+    },
+    header/.style={%
+        inner ysep=+1.5em,
+        append after command={
+          \pgfextra{\let\TikZlastnode\tikzlastnode}
+          node [header node] (header-\TikZlastnode) at (\TikZlastnode.north) {#1}
+          % the next node contains both \tikzlastnode and its header
+          % this is needed so that h- can be used to connect lines
+          node [span=(\TikZlastnode)(header-\TikZlastnode)]
+               at (fit bounding box) (h-\TikZlastnode) {}
+        }
+    },
+    optional/.style={
+        shape=diamond, align=center, draw=#1
+    },
+    optional process/.style={
+        shape=rectangle, align=center, draw=#1
+    },
+}
+    
+
+\usepackage{tikz-feynman}
+\usepackage{tikz-network}
+\usepackage{pgfplots}
+\usepgfplotslibrary{patchplots}
+\pgfplotsset{compat=1.15}
+
+%% framing
+\usepackage{fancybox}
+\usepackage{boites}
+\usepackage{tcolorbox}
+\tcbuselibrary{skins,theorems,breakable}
+
+%%%% Japanese
+\usepackage{luatexja-fontspec}
+\usepackage{ascmac}
+\usepackage{listings} %日本語のコメントアウトをする場合jlisting（もしくはjvlisting）が必要
+
+%%%%%%%%%%optional settings%%%%%%%%%%
+
+
+\begin{document}
+
+\begin{tikzpicture}[
+    dot/.style={circle,fill,inner sep=1pt}
+]
+    \path 
+        coordinate (O) % 原点
+        coordinate[dot,label=above right:$a$] (a) at (1.5,1.5)  % デカルト座標
+        coordinate[dot,label=below left:$b$] (b) at (120:1) % 極座標
+        ++(0,-1) coordinate[dot,label=above:$c$] (c)  % 相対座標 (デカルト座標)
+        ++(45:{sqrt(2)}) coordinate[dot,label=above:$d$] (d) % 相対座標 (極座標)
+    ;
+    % ===== 以下，座標の指定と関係のない部分 ===== 
+    % xy座標軸
+    \draw[->] (O) -- +(2,0) node[right] {$x$};
+    \draw[->] (O) -- +(0,2) node[above] {$y$};
+    % % 座標値の表示
+    % \node[right] at (a) {\texttt{(1,1)}};
+    % \node[below] at (b) {\texttt{(120:1)}};
+    % \node[left] at (c) {\texttt{++(0,-1)}};
+    % \node[below] at (d) {\texttt{++(45:\{sqrt(2)\})}};
+\end{tikzpicture}
+
+
+
+\end{document}
+

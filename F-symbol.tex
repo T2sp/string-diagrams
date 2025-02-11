@@ -1,0 +1,149 @@
+\documentclass{ltjsarticle}
+
+%%%%%%%%%%packages%%%%%%%%%%
+
+% \usepackage[utf8]{inputenc}
+
+%% colors and links
+\usepackage[svgnames]{xcolor}
+\usepackage[colorlinks,citecolor=DarkGreen,linkcolor=DeepPink,linktocpage,unicode]{hyperref} 
+
+%% equations
+%%%% math
+\usepackage{amsmath,amsfonts,amssymb,amsthm}
+\usepackage{mathtools}
+\usepackage{mathrsfs}
+\usepackage{bm}
+\usepackage{cancel}
+\usepackage{dsfont}
+
+%% positioning
+\usepackage{array}
+\usepackage{float}
+
+%% table
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{hhline}
+\usepackage{caption}
+\captionsetup{format=hang}
+\usepackage{subcaption}
+
+%% figure
+\usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{
+    intersections,
+    calc,
+    patterns,
+    through,
+    positioning,
+    arrows,
+    backgrounds,
+    decorations,
+    bending,
+    cd,
+    tqft,
+    braids,
+    ext.paths.ortho,                    % for ortho paths
+  ext.positioning-plus,               % for 
+  ext.node-families.shapes.geometric
+}
+\tikzset{
+    ->-/.style={
+        decoration={
+            markings,
+            mark=at position #1 with {\arrow{>}}
+        },
+        postaction={decorate}
+    },
+    bullet/.style={
+        circle,fill,
+        inner sep=2pt,
+        label={#1}
+    },    
+    process/.style={
+        shape=rectangle, rounded corners, align=center, draw=#1, minimum width=0.875\linewidth, double
+    },
+    header node/.style={
+        node family/width=header nodes,
+        font=\strut\Large\ttfamily,
+        text depth=+.3ex, fill=white, draw
+    },
+    header/.style={%
+        inner ysep=+1.5em,
+        append after command={
+          \pgfextra{\let\TikZlastnode\tikzlastnode}
+          node [header node] (header-\TikZlastnode) at (\TikZlastnode.north) {#1}
+          % the next node contains both \tikzlastnode and its header
+          % this is needed so that h- can be used to connect lines
+          node [span=(\TikZlastnode)(header-\TikZlastnode)]
+               at (fit bounding box) (h-\TikZlastnode) {}
+        }
+    },
+    optional/.style={
+        shape=diamond, align=center, draw=#1
+    },
+    optional process/.style={
+        shape=rectangle, align=center, draw=#1
+    },
+    squarednode/.style={
+        rectangle, draw=black!60, minimum size=5mm
+    }
+}
+    
+
+\usepackage{tikz-feynman}
+\usepackage{tikz-network}
+\usepackage{pgfplots}
+\usepgfplotslibrary{patchplots}
+\pgfplotsset{compat=1.15}
+
+%% framing
+\usepackage{fancybox}
+\usepackage{boites}
+\usepackage{tcolorbox}
+\tcbuselibrary{skins,theorems,breakable}
+
+%%%% Japanese
+\usepackage{luatexja-fontspec}
+\usepackage{ascmac}
+\usepackage{listings} %日本語のコメントアウトをする場合jlisting（もしくはjvlisting）が必要
+
+%%%%%%%%%%optional settings%%%%%%%%%%
+
+
+\begin{document}
+
+\begin{align}
+    \begin{tikzpicture}[baseline={([yshift=-.5ex]current bounding box.center)}]
+        \path coordinate (a)
+        ++(0,1) coordinate[bullet,label=left:$v_1$] (v_1)
+        +(60:2) coordinate (d)
+        ++(120:1) coordinate[bullet,label=left:$v_2$] (v_2)
+        +(60:1) coordinate (c)
+        +(120:1) coordinate (b)
+        ;
+        \draw[->-=.2,->-=.7] (a) -- node[midway, right] {$a$} (v_1) -- node[midway, right] {$d$} (d);
+        \draw[->-=.3,->-=.7] (v_1) -- node[midway, above right] {$x$} (v_2) -- node[midway, left] {$b$} (b);
+        \draw[->-=.5] (v_2) -- node[midway,right] {$c$} (c);
+    \end{tikzpicture}
+    &\quad \eqqcolon \sum_{\substack{\textcolor{red}{y} \in \mathrm{Simp}(\mathcal{C}), \\ \textcolor{red}{u_1} \in \mathrm{Basis}(a,\, b \otimes \textcolor{red}{y}), \\ \textcolor{red}{u_2} \in \mathrm{Basis}(\textcolor{red}{y},\, c \otimes d)}} 
+    (F^{bcd}_a)_{(x;\, v_1,\, v_2),\, (\textcolor{red}{y;\, u_1,\, u_2})}
+    \begin{tikzpicture}[baseline={([yshift=-.5ex]current bounding box.center)}]
+        \path coordinate (a)
+        ++(0,1) coordinate[bullet,red,label=right:$\textcolor{red}{u_1}$] (u_1)
+        +(120:2) coordinate (b)
+        ++(60:1) coordinate[bullet,red,label=right:$\textcolor{red}{u_2}$] (u_2)
+        +(120:1) coordinate (c)
+        +(60:1) coordinate (d)
+        ;
+        \draw[->-=.2,->-=.7] (a) -- node[midway, left] {$a$} (u_1) -- node[midway, left] {$b$} (b);
+        \draw[->-=.3,->-=.7] (u_1) -- node[midway, above left, red] {$y$} (u_2) -- node[midway, right] {$d$} (d);
+        \draw[->-=.5] (u_2) -- node[midway, left] {$c$} (c);
+    \end{tikzpicture}
+\end{align}
+
+
+\end{document}
+
