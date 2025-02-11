@@ -1,4 +1,4 @@
-\documentclass{ltjsarticle}
+\documentclass{standalone}
 
 %%%%%%%%%%packages%%%%%%%%%%
 
@@ -115,7 +115,8 @@
 
 \begin{document}
 
-\begin{align}
+$
+\begin{aligned}
     \begin{tikzpicture}[baseline={([yshift=-.5ex]current bounding box.center)}]
         \path coordinate (a)
         ++(0,1) coordinate[bullet,label=left:$v_1$] (v_1)
@@ -142,8 +143,8 @@
         \draw[->-=.3,->-=.7] (u_1) -- node[midway, above left, red] {$y$} (u_2) -- node[midway, right] {$d$} (d);
         \draw[->-=.5] (u_2) -- node[midway, left] {$c$} (c);
     \end{tikzpicture}
-\end{align}
-
+\end{aligned}
+$
 
 \end{document}
 
