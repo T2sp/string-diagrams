@@ -466,7 +466,7 @@ t \in [\alpha,\, \beta]
 ```
 
 ```math
-\mathrm{coev}^{\mathrm{L}}_x  \colon x \otimes x^*  \longrightarrow 1
+\mathrm{coev}^{\mathrm{L}}_x  \colon 1 \longrightarrow x \otimes x^*
 ```
 
 ```math
@@ -474,7 +474,7 @@ t \in [\alpha,\, \beta]
 ```
 
 ```math
-\mathrm{coev}^{\mathrm{R}}_x  \colon {}^* x \otimes x  \longrightarrow 1
+\mathrm{coev}^{\mathrm{R}}_x  \colon 1 \longrightarrow {}^* x \otimes x
 ```
 
 が存在して，**zig-zag 恒等式**と呼ばれる条件を満たす．これらの射をストリング図式としてTikZで書く時は，例えば
