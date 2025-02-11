@@ -5,8 +5,8 @@ tags:
   - TeX
   - TikZ
 private: false
-updated_at: '2025-02-12T04:09:57+09:00'
-id: e008da719948146e5ae9
+updated_at: ''
+id: null
 organization_url_name: null
 slide: false
 ignorePublish: false
