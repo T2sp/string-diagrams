@@ -77,12 +77,12 @@ ignorePublish: false
     \draw[->-=.5] (s) -- (t);
 \end{tikzpicture}
 ```
-![sample of an arrow](../examples/out/arrow.png)
+<!-- ![sample of an arrow](../examples/out/arrow.png) -->
 
 矢印のスタイルが気に入らない場合は `\arrow{...}` の部分を変更すれば良い．
 
-![sample of arrows](https://github.com/T2sp/string-diagrams/tree/main/examples/out/arrows.png?raw=true)
-
+<!-- ![sample of arrows](https://github.com/T2sp/string-diagrams/tree/main/examples/out/arrows.png?raw=true) -->
+![arrows.png](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/3028228/b93afea7-5435-e57f-cb5b-b9b83a7ad036.png)
 - 矢印のサイズ調整の詳細は [公式ドキュメントの **16.3.1 Size** の項目](https://tikz.dev/tikz-arrows) を参照．
 - 矢印の位置調整の詳細は [公式ドキュメントの `/pgf/decoration/mark` の項目](https://tikz.dev/library-decorations#autosec-5466) を参照．
 
@@ -107,7 +107,8 @@ bullet/.style={
 \end{tikzpicture}
 ```
 
-![sample of a bullet](../examples/out/bullet.png)
+<!-- ![sample of a bullet](../examples/out/bullet.png) -->
+![bullet.png](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/3028228/1dcda319-c1bc-4527-f4b1-fd6d8d3a6f3b.png)
 
 ## 箱
 
@@ -127,7 +128,8 @@ squarednode/.style={
     \draw[->-=.25,->-=.75] (s) -- node[midway,right] {$x$} (f) -- node[midway,right] {$y$} (t);
 \end{tikzpicture}
 ```
-![sample of a bullet](../examples/out/squarenode.png)
+<!-- ![sample of a bullet](../examples/out/squarenode.png) -->
+![squarenode.png](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/3028228/ef90d106-b217-34bd-30b1-3ae9b46e1a7b.png)
 
 ## バツ印
 
@@ -223,7 +225,8 @@ TikZの図は，座標点と，それらの間を繋ぐ曲線から構成され�
     \draw[->] (O) -- +(0,2) node[above] {$y$};
 \end{tikzpicture}
 ```
-![sample of coordinates](../examples/out/coordinate.png)
+<!-- ![pl.png](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/3028228/19f74a4c-5f39-bade-b016-0b39704875a0.png) -->
+![coordinate.png](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/3028228/2a79e8dc-4f66-6538-f345-b7fcd1adeeec.png)
 
 ### 座標の計算（やや発展的）
 
@@ -265,7 +268,7 @@ TikZの図は，座標点と，それらの間を繋ぐ曲線から構成され�
     \draw[->-=.5] (f) -- node[midway, below left] {$b$} (v_1);
 \end{tikzpicture}
 ```
-![sample of trivalent junction](../examples/out/pl.png)
+![pl.png](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/3028228/19f74a4c-5f39-bade-b016-0b39704875a0.png)
 
 ### to path
 
@@ -286,7 +289,7 @@ TikZの図は，座標点と，それらの間を繋ぐ曲線から構成され�
     \draw[->-=.5] (a) to[out=90,in=90,looseness=2] node[midway,above] {\scriptsize\texttt{looseness=2}} (b);
 \end{tikzpicture}
 ```
-![sample of to-path](../examples/out/to-path.png)
+![arc.png](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/3028228/7ba6611e-b12d-b653-c2a1-47377037c2e9.png)
 
 ### Bezier曲線
 
@@ -336,7 +339,7 @@ B(t) = (1-t)^3 P_0 + 3(1-t)^2t P_1 + 3(1-t)t^2 P_2 + t^3 P_3
     \draw[dashed] (c) -- (ctrlcd_1) -- (ctrlcd_2) -- (d);
 \end{tikzpicture}
 ```
-![sample of Bezier curves](../examples/out/Bezier.png)
+![Bezier.png](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/3028228/23417d95-ceab-2706-e0bf-be3e8cf4d920.png)
 
 ## 円・楕円・弧
 
@@ -398,7 +401,7 @@ t \in [\alpha,\, \beta]
     \draw[blue] ($(ref) + (-0.2,0)$) arc (0:120:0.8) node[midway, right] {$\beta$};
 \end{tikzpicture}
 ```
-![sample of an arc](../examples/out/arc.png)
+![arc.png](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/3028228/7ba6611e-b12d-b653-c2a1-47377037c2e9.png)
 
 ## 数式にTikZの図を埋め込む方法
 
@@ -452,7 +455,7 @@ t \in [\alpha,\, \beta]
 \end{align}
 ```
 
-![sample of F-symbol](../examples/out/F-symbol.png)
+![F-symbol.png](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/3028228/587df875-c89d-d64e-aaf1-d5b0c47b5083.png)
 
 ## evaluation, coevaluation
 
@@ -491,7 +494,7 @@ t \in [\alpha,\, \beta]
 ```
 のようにマクロを定義してしまうのが良い．ここで，第1引数に渡す座標が左側のテンソル因子を表すように定義している．
 
-![sample of ev/coev](../examples/out/ev-coev.png)
+![ev-coev.png](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/3028228/41f2c893-95a2-fbb6-7f98-f2319ffae4e7.png)
 
 このマクロを使って4つあるzig-zag 恒等式のうちの一つをTikZで書いてみると，次のようになる：
 
@@ -512,7 +515,7 @@ t \in [\alpha,\, \beta]
     \draw[->-=.5] (x) --node[midway, right] {$x$} (0,2);
 \end{tikzpicture}
 ```
-![sample of zig-zag-equation](../examples/out/zigzag.png)
+![zigzag.png](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/3028228/703b54c9-7791-8d4f-7097-2554ab533ab5.png)
 
 ## BraidingとYang-Baxter方程式
 
