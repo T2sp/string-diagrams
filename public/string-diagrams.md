@@ -77,11 +77,11 @@ ignorePublish: false
     \draw[->-=.5] (s) -- (t);
 \end{tikzpicture}
 ```
-![sample of an arrow](../examples/out/arrow.pdf)
+![sample of an arrow](../examples/out/arrow.png)
 
 矢印のスタイルが気に入らない場合は `\arrow{...}` の部分を変更すれば良い．
 
-![sample of arrows](../examples/out/arrows.pdf)
+![sample of arrows](https://github.com/T2sp/string-diagrams/tree/main/examples/out/arrows.png?raw=true)
 
 - 矢印のサイズ調整の詳細は [公式ドキュメントの **16.3.1 Size** の項目](https://tikz.dev/tikz-arrows) を参照．
 - 矢印の位置調整の詳細は [公式ドキュメントの `/pgf/decoration/mark` の項目](https://tikz.dev/library-decorations#autosec-5466) を参照．
@@ -107,7 +107,7 @@ bullet/.style={
 \end{tikzpicture}
 ```
 
-![sample of a bullet](../examples/out/bullet.pdf)
+![sample of a bullet](../examples/out/bullet.png)
 
 ## 箱
 
@@ -127,7 +127,7 @@ squarednode/.style={
     \draw[->-=.25,->-=.75] (s) -- node[midway,right] {$x$} (f) -- node[midway,right] {$y$} (t);
 \end{tikzpicture}
 ```
-![sample of a bullet](../examples/out/squarenode.pdf)
+![sample of a bullet](../examples/out/squarenode.png)
 
 ## バツ印
 
@@ -223,7 +223,7 @@ TikZの図は，座標点と，それらの間を繋ぐ曲線から構成され�
     \draw[->] (O) -- +(0,2) node[above] {$y$};
 \end{tikzpicture}
 ```
-![sample of coordinates](../examples/out/coordinate.pdf)
+![sample of coordinates](../examples/out/coordinate.png)
 
 ### 座標の計算（やや発展的）
 
@@ -265,7 +265,7 @@ TikZの図は，座標点と，それらの間を繋ぐ曲線から構成され�
     \draw[->-=.5] (f) -- node[midway, below left] {$b$} (v_1);
 \end{tikzpicture}
 ```
-![sample of trivalent junction](../examples/out/pl.pdf)
+![sample of trivalent junction](../examples/out/pl.png)
 
 ### to path
 
@@ -286,7 +286,7 @@ TikZの図は，座標点と，それらの間を繋ぐ曲線から構成され�
     \draw[->-=.5] (a) to[out=90,in=90,looseness=2] node[midway,above] {\scriptsize\texttt{looseness=2}} (b);
 \end{tikzpicture}
 ```
-![sample of to-path](../examples/out/to-path.pdf)
+![sample of to-path](../examples/out/to-path.png)
 
 ### Bezier曲線
 
@@ -336,7 +336,7 @@ B(t) = (1-t)^3 P_0 + 3(1-t)^2t P_1 + 3(1-t)t^2 P_2 + t^3 P_3
     \draw[dashed] (c) -- (ctrlcd_1) -- (ctrlcd_2) -- (d);
 \end{tikzpicture}
 ```
-![sample of Bezier curves](../examples/out/Bezier.pdf)
+![sample of Bezier curves](../examples/out/Bezier.png)
 
 ## 円・楕円・弧
 
@@ -398,7 +398,7 @@ t \in [\alpha,\, \beta]
     \draw[blue] ($(ref) + (-0.2,0)$) arc (0:120:0.8) node[midway, right] {$\beta$};
 \end{tikzpicture}
 ```
-![sample of an arc](../examples/out/arc.pdf)
+![sample of an arc](../examples/out/arc.png)
 
 ## 数式にTikZの図を埋め込む方法
 
@@ -452,7 +452,7 @@ t \in [\alpha,\, \beta]
 \end{align}
 ```
 
-![sample of F-symbol](../examples/out/F-symbol.pdf)
+![sample of F-symbol](../examples/out/F-symbol.png)
 
 ## evaluation, coevaluation
 
@@ -491,7 +491,7 @@ t \in [\alpha,\, \beta]
 ```
 のようにマクロを定義してしまうのが良い．ここで，第1引数に渡す座標が左側のテンソル因子を表すように定義している．
 
-![sample of ev/coev](../examples/out/ev-coev.pdf)
+![sample of ev/coev](../examples/out/ev-coev.png)
 
 このマクロを使って4つあるzig-zag 恒等式のうちの一つをTikZで書いてみると，次のようになる：
 
@@ -512,7 +512,7 @@ t \in [\alpha,\, \beta]
     \draw[->-=.5] (x) --node[midway, right] {$x$} (0,2);
 \end{tikzpicture}
 ```
-![sample of zig-zag-equation](../examples/out/zigzag.pdf)
+![sample of zig-zag-equation](../examples/out/zigzag.png)
 
 ## BraidingとYang-Baxter方程式
 
