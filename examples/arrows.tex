@@ -57,6 +57,13 @@
         },
         postaction={decorate}
     },
+    -<-/.style={
+        decoration={
+            markings,
+            mark=at position #1 with {\arrow{<}}
+        },
+        postaction={decorate}
+    },
     bullet/.style={
         circle,fill,
         inner sep=2pt,
@@ -113,11 +120,80 @@
 \begin{document}
 
 \begin{tikzpicture}
-    \path coordinate (s)
-    ++(1,0) coordinate (t)
+    \path foreach \i in {1,...,10} {
+      coordinate (s_\i) at (0, {-\i})
+      coordinate (t_\i) at (3, {-\i})
+    }
     ;
-    \draw[->-=.5] (s) -- (t);
+    \draw[->-=.5] (s_1) -- node[midway, above=2mm] {\texttt{\textbackslash arrow\{>\}}} (t_1);
+    \draw[-<-=.5] (s_2) -- node[midway, above=2mm] {\texttt{\textbackslash arrow\{<\}}} (t_2);
+    \draw[
+        decoration={
+            markings,
+            mark=at position 0.5 with {\arrow{Stealth}}
+        },
+        postaction={decorate}
+    ] 
+    (s_3) -- node[midway, above=2mm] {\texttt{\textbackslash arrow\{Stealth\}}} (t_3);
+    \draw[
+        decoration={
+            markings,
+            mark=at position 0.5 with {\arrow{Stealth[reversed]}}
+        },
+        postaction={decorate}
+    ] 
+    (s_4) -- node[midway, above=2mm] {\texttt{\textbackslash arrow\{Stealth[reversed]\}}} (t_4);
+    \draw[
+        decoration={
+            markings,
+            mark=at position 0.5 with {\arrow{Latex}}
+        },
+        postaction={decorate}
+    ] 
+    (s_5) -- node[midway, above=2mm] {\texttt{\textbackslash arrow\{Latex\}}} (t_5);
+    \draw[
+        decoration={
+            markings,
+            mark=at position 0.5 with {\arrow{Latex[reversed]}}
+        },
+        postaction={decorate}
+    ] 
+    (s_6) -- node[midway, above=2mm] {\texttt{\textbackslash arrow\{Latex[reversed]\}}} (t_6);
+    \draw[
+        decoration={
+            markings,
+            mark=at position 0.5 with {\arrow{Stealth[harpoon]}}
+        },
+        postaction={decorate}
+    ] 
+    (s_7) -- node[midway, above=2mm] {\texttt{\textbackslash arrow\{Stealth[harpoon]\}}} (t_7);
+    \draw[
+        decoration={
+            markings,
+            mark=at position 0.5 with {\arrow{Stealth[harpoon,reversed]}}
+        },
+        postaction={decorate}
+    ] 
+    (s_8) -- node[midway, above=2mm] {\texttt{\textbackslash arrow\{Stealth[harpoon,reversed]\}}} (t_8);
+    \draw[
+        decoration={
+            markings,
+            mark=at position 0.5 with {\arrow{Stealth[harpoon,swap]}}
+        },
+        postaction={decorate}
+    ] 
+    (s_9) -- node[midway, above=2mm] {\texttt{\textbackslash arrow\{Stealth[harpoon,swap]\}}} (t_9);
+    \draw[
+        decoration={
+            markings,
+            mark=at position 0.5 with {\arrow{Stealth[harpoon,swap,reversed]}}
+        },
+        postaction={decorate}
+    ] 
+    (s_10) -- node[midway, above=2mm] {\texttt{\textbackslash arrow\{Stealth[harpoon,swap,reversed]\}}} (t_10);
 \end{tikzpicture}
+
+
 
 
 \end{document}

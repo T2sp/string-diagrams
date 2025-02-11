@@ -87,6 +87,9 @@
     optional process/.style={
         shape=rectangle, align=center, draw=#1
     },
+    squarednode/.style={
+        rectangle, draw=black!60, minimum size=5mm
+    }
 }
     
 
@@ -114,9 +117,10 @@
 
 \begin{tikzpicture}
     \path coordinate (s)
-    ++(1,0) coordinate (t)
+    ++(0,1) coordinate[squarednode,label=center:$f$] (f)
+    ++(0,1) coordinate (t)
     ;
-    \draw[->-=.5] (s) -- (t);
+    \draw[->-=.25,->-=.75] (s) -- node[midway,right] {$x$} (f) -- node[midway,right] {$y$} (t);
 \end{tikzpicture}
 
 
