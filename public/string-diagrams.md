@@ -129,7 +129,7 @@ squarednode/.style={
 ```
 ![sample of a bullet](../examples/out/squarenode.pdf)
 
-# バツ印
+## バツ印
 
 TikZのデフォルトのオプションにはバツ印が存在しないらしい．
 
