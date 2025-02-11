@@ -1,0 +1,195 @@
+\documentclass{standalone}
+
+%%%%%%%%%%packages%%%%%%%%%%
+
+% \usepackage[utf8]{inputenc}
+
+%% colors and links
+\usepackage[svgnames]{xcolor}
+\usepackage[colorlinks,citecolor=DarkGreen,linkcolor=DeepPink,linktocpage,unicode]{hyperref} 
+
+%% equations
+%%%% math
+\usepackage{amsmath,amsfonts,amssymb,amsthm}
+\usepackage{mathtools}
+\usepackage{mathrsfs}
+\usepackage{bm}
+\usepackage{cancel}
+\usepackage{dsfont}
+
+%% positioning
+\usepackage{array}
+\usepackage{float}
+
+%% table
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{hhline}
+\usepackage{caption}
+\captionsetup{format=hang}
+\usepackage{subcaption}
+
+%% figure
+\usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{
+    intersections,
+    calc,
+    patterns,
+    through,
+    positioning,
+    arrows,
+    backgrounds,
+    decorations,
+    bending,
+    cd,
+    tqft,
+    braids,
+    ext.paths.ortho,                    % for ortho paths
+  ext.positioning-plus,               % for 
+  ext.node-families.shapes.geometric
+}
+\tikzset{
+    ->-/.style={
+        decoration={
+            markings,
+            mark=at position #1 with {\arrow{>}}
+        },
+        postaction={decorate}
+    },
+    -<-/.style={
+        decoration={
+            markings,
+            mark=at position #1 with {\arrow{<}}
+        },
+        postaction={decorate}
+    },
+    bullet/.style={
+        circle,fill,
+        inner sep=2pt,
+        label={#1}
+    },    
+    process/.style={
+        shape=rectangle, rounded corners, align=center, draw=#1, minimum width=0.875\linewidth, double
+    },
+    header node/.style={
+        node family/width=header nodes,
+        font=\strut\Large\ttfamily,
+        text depth=+.3ex, fill=white, draw
+    },
+    header/.style={%
+        inner ysep=+1.5em,
+        append after command={
+          \pgfextra{\let\TikZlastnode\tikzlastnode}
+          node [header node] (header-\TikZlastnode) at (\TikZlastnode.north) {#1}
+          % the next node contains both \tikzlastnode and its header
+          % this is needed so that h- can be used to connect lines
+          node [span=(\TikZlastnode)(header-\TikZlastnode)]
+               at (fit bounding box) (h-\TikZlastnode) {}
+        }
+    },
+    optional/.style={
+        shape=diamond, align=center, draw=#1
+    },
+    optional process/.style={
+        shape=rectangle, align=center, draw=#1
+    },
+    squarednode/.style={
+        rectangle, draw=black!60, minimum size=5mm
+    }
+}
+    
+
+\usepackage{tikz-feynman}
+\usepackage{tikz-network}
+\usepackage{pgfplots}
+\usepgfplotslibrary{patchplots}
+\pgfplotsset{compat=1.15}
+
+%% framing
+\usepackage{fancybox}
+\usepackage{boites}
+\usepackage{tcolorbox}
+\tcbuselibrary{skins,theorems,breakable}
+
+%%%% Japanese
+\usepackage{luatexja-fontspec}
+\usepackage{ascmac}
+\usepackage{listings} %日本語のコメントアウトをする場合jlisting（もしくはjvlisting）が必要
+
+%%%%%%%%%%optional settings%%%%%%%%%%
+\usepackage{mymonoidalcat}
+
+\begin{document}
+
+$
+\begin{aligned}
+    \begin{tikzpicture}[baseline={([yshift=-.5ex]current bounding box.center)}]
+        \path coordinate (x_1)
+        ++(1,0) coordinate (x_2)
+        ++(1,0) coordinate (x_3)
+        ;
+        \LCOEV{x_1}{x_2}
+        \LEV{x_2}{x_3}
+        \draw[-<-=.5] (x_1) -- +(0,1);
+        \draw[->-=.5] (x_3) -- +(0,-1);
+    \end{tikzpicture}
+    &\quad = \quad \begin{tikzpicture}[baseline={([yshift=-.5ex]current bounding box.center)}]
+        \path coordinate (x);
+        \draw[->-=.5] (x) --node[midway, right] {$x$} (0,2);
+    \end{tikzpicture}
+    ,\qquad
+    \begin{tikzpicture}[baseline={([yshift=-.5ex]current bounding box.center)}]
+        \path coordinate (x_1)
+        ++(1,0) coordinate (x_2)
+        ++(1,0) coordinate (x_3)
+        ;
+        \LEV{x_1}{x_2}
+        \LCOEV{x_2}{x_3}
+        \draw[->-=.5] (x_1) -- +(0,-1);
+        \draw[-<-=.5] (x_3) -- +(0,1);
+    \end{tikzpicture}
+    &\quad = \quad \begin{tikzpicture}[baseline={([yshift=-.5ex]current bounding box.center)}]
+        \path coordinate (x);
+        \draw[->-=.5] (x) --node[midway, right] {$x^*$} (0,-2);
+    \end{tikzpicture}
+    \\
+    \\
+    \begin{tikzpicture}[baseline={([yshift=-.5ex]current bounding box.center)}]
+        \path coordinate (x_1)
+        ++(1,0) coordinate (x_2)
+        ++(1,0) coordinate (x_3)
+        ;
+        \REV{x_1}{x_2}
+        \RCOEV{x_2}{x_3}
+        \draw[-<-=.5] (x_1) -- +(0,-1);
+        \draw[->-=.5] (x_3) -- +(0,1);
+    \end{tikzpicture}
+    &\quad = \quad 
+    \begin{tikzpicture}[baseline={([yshift=-.5ex]current bounding box.center)}]
+        \path coordinate (x);
+        \draw[->-=.5] (x) --node[midway, right] {$x$} (0,2);
+    \end{tikzpicture}
+    ,\qquad
+    \begin{tikzpicture}[baseline={([yshift=-.5ex]current bounding box.center)}]
+        \path coordinate (x_1)
+        ++(1,0) coordinate (x_2)
+        ++(1,0) coordinate (x_3)
+        ;
+        \RCOEV{x_1}{x_2}
+        \REV{x_2}{x_3}
+        \draw[-<-=.5] (x_1) -- +(0,1);
+        \draw[->-=.5] (x_3) -- +(0,-1);
+    \end{tikzpicture}
+    &\quad = \quad \begin{tikzpicture}[baseline={([yshift=-.5ex]current bounding box.center)}]
+        \path coordinate (x);
+        \draw[->-=.5] (x) --node[midway, right] {${}^* x$} (0,-2);
+    \end{tikzpicture}
+\end{aligned}
+$
+
+
+
+
+\end{document}
+

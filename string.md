@@ -64,7 +64,10 @@
 \end{tikzpicture}
 ```
 
-矢印のスタイルが気に入らない場合は `\arrow{...}` の部分を変更すれば良い．矢印の細かいサイズ調整については [公式ドキュメント](https://tikz.dev/tikz-arrows) を参照．
+矢印のスタイルが気に入らない場合は `\arrow{...}` の部分を変更すれば良い．
+
+- 矢印のサイズ調整の詳細は [公式ドキュメントの **16.3.1 Size** の項目](https://tikz.dev/tikz-arrows) を参照．
+- 矢印の位置調整の詳細は [公式ドキュメントの `/pgf/decoration/mark` の項目](https://tikz.dev/library-decorations#autosec-5466) を参照．
 
 ## 点
 
@@ -130,7 +133,7 @@ TikZの図は，座標点と，それらの間を繋ぐ曲線から構成され�
 点が少ない場合は絶対座標でも良いが，点が多い場合は相対座標を使うと便利だと思う．
 
 :::note info
-曲線の交点の座標を `[intersections={of=curve1 and curve2, ...}]` で算出したり，重み付き重心を `(barycentric cs: v1=a1, v2=a2, ...)` で算出するなど，既存のオブジェクトをもとに新しい座標を指定することもできる．詳細は [公式ドキュメント](https://tikz.dev/tikz-coordinates#autosec-557) を参照．
+曲線の交点の座標を `[intersections={of=curve1 and curve2, ...}]` で算出したり，重み付き重心を `(barycentric cs: v1=a1, v2=a2, ...)` で算出するなど，既存のオブジェクトをもとに新しい座標を指定することもできる．詳細は [公式ドキュメントの **13 Specifying Coordinates**](https://tikz.dev/tikz-coordinates#autosec-557) を参照．
 :::
 
 ### 絶対座標
@@ -242,7 +245,7 @@ TikZの図は，座標点と，それらの間を繋ぐ曲線から構成され�
 \draw[option] (座標1) to[out=発射角,in=入射角,looseness=実数, ...] (座標2);
 ```
 と書く．`looseness` の値は実数値で，大きいほど「膨らみ」が大きくなる．デフォルトは `looseness=1` である．
-詳細は[公式ドキュメント](https://tikz.dev/library-edges) を参照．
+詳細は[公式ドキュメントの **74 To Path Library](https://tikz.dev/library-edges) を参照．
 
 ```TeX:使用例
 \begin{tikzpicture}
@@ -332,9 +335,13 @@ B(t) = (1-t)^3 P_0 + 3(1-t)^2t P_1 + 3(1-t)t^2 P_2 + t^3 P_3
 
 となっている．つまり，
 ```math
-x(t) &= x - r \cos(\alpha) + r \cos(t), \\
-y(t) &= y - r \sin(\alpha) + r \sin(t), \\
-t &\in [\alpha,\, \beta]
+x(t) = x - r \cos(\alpha) + r \cos(t),
+```
+```math
+y(t) = y - r \sin(\alpha) + r \sin(t)
+```
+```math
+t \in [\alpha,\, \beta]
 ```
 という曲線を描画する．
 
@@ -412,5 +419,60 @@ t &\in [\alpha,\, \beta]
 \end{align}
 ```
 
+## evaluation, coevaluation
 
+[rigidなモノイダル圏](https://ncatlab.org/nlab/show/rigid+monoidal+category) においては，任意の対象 $x$ に対して **(left/right) evaluation/coevaluation** という射
+
+```math
+\mathrm{ev}^{\mathrm{L}}_x \colon x^* \otimes x \longrightarrow 1
+```
+
+```math
+\mathrm{coev}^{\mathrm{L}}_x  \colon x \otimes x^*  \longrightarrow 1
+```
+
+```math
+\mathrm{ev}^{\mathrm{R}}_x \colon x \otimes {}^* x \longrightarrow 1
+```
+
+```math
+\mathrm{coev}^{\mathrm{R}}_x  \colon {}^* x \otimes x  \longrightarrow 1
+```
+
+が存在して，**zig-zag 恒等式**と呼ばれる条件を満たす．これらの射をストリング図式としてTikZで書く時は，例えば
+```TeX
+\newcommand{\LEV}[2]{
+    \draw[-<-=.2,-<-=.8] (#1) to[out=90,in=90,looseness=2] (#2);
+}
+\newcommand{\LCOEV}[2]{
+    \draw[-<-=.2,-<-=.8] (#1) to[out=-90,in=-90,looseness=2] (#2);
+}
+\newcommand{\REV}[2]{
+    \draw[->-=.2,->-=.8] (#1) to[out=90,in=90,looseness=2] (#2);
+}
+\newcommand{\RCOEV}[2]{
+    \draw[->-=.2,->-=.8] (#1) to[out=-90,in=-90,looseness=2] (#2);
+}
+```
+のようにマクロを定義してしまうのが良い．ここで，第1引数に渡す座標が左側のテンソル因子を表すように定義している．
+
+このマクロを使って4つあるzig-zag 恒等式のうちの一つをTikZで書いてみると，次のようになる：
+
+```TeX
+\begin{tikzpicture}[baseline={([yshift=-.5ex]current bounding box.center)}]
+    \path coordinate (x_1)
+    ++(1,0) coordinate (x_2)
+    ++(1,0) coordinate (x_3)
+    ;
+    \LCOEV{x_1}{x_2}
+    \LEV{x_2}{x_3}
+    \draw[-<-=.5] (x_1) -- +(0,1);
+    \draw[->-=.5] (x_3) -- +(0,-1);
+\end{tikzpicture}
+&\quad = \quad 
+\begin{tikzpicture}[baseline={([yshift=-.5ex]current bounding box.center)}]
+    \path coordinate (x);
+    \draw[->-=.5] (x) --node[midway, right] {$x$} (0,2);
+\end{tikzpicture}
+```
 
