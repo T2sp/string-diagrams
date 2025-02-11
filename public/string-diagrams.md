@@ -341,21 +341,21 @@ B(t) = (1-t)^3 P_0 + 3(1-t)^2t P_1 + 3(1-t)t^2 P_2 + t^3 P_3
 ```
 ![Bezier.png](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/3028228/23417d95-ceab-2706-e0bf-be3e8cf4d920.png)
 
-## 円・楕円・弧
+### 円・楕円・弧
 
-### 円
+#### 円
 
 ```TeX
 \draw[option] (中心座標) [radius=半径];
 ```
 
-### 楕円
+#### 楕円
 
 ```TeX
 \draw[option] (中心座標) [x radius= ..., y radius= ...];
 ```
 
-### 弧
+#### 弧
 
 ```TeX
 \draw[option] (x,y) arc (α:β:r);
